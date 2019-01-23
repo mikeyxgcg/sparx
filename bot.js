@@ -100,7 +100,7 @@ client.on('message', message => {
     }
 });
 
-client.on('message', message => {
+client2.on('message', message => {
   var args = message.content.toLowerCase().split(' ');
     var command = args[0];
     var prefix = '-';
