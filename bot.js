@@ -82,42 +82,42 @@ if (message.content === '!spam') {
 });
 
 client.on('message', message => {
-  var args = message.content.toLowerCase().split(' ');
-    var command = args[0];
-    var prefix = '-';
-    var wordsSay = message.content.split(' ').slice(1).join(' ');
-    
-    if(command == prefix + 'say') {
+        var prefix = "+";  // البريفكس
+        if (message.author.bot) return;
+        if (!message.content.startsWith(prefix)) return;
+      
+        let command = message.content.split(" ")[0];
+        command = command.slice(prefix.length);
+      
+      
+      let args = message.content.split(" ").slice(1);
+      let x = args.join(" ")
+        if(message.content.startsWith(prefix + 'say')) { // الامر
+            message.channel.send(''+x);
+                message.delete(999)
+        }
+        
+       
+      });
 
-        if(!wordsSay) return message.channel.send(`**Ex:** ${prefix}say Hello Im Bot`);
+   client2.on('message', message => {
+        var prefix = "*";  // البريفكس
+        if (message.author.bot) return;
+        if (!message.content.startsWith(prefix)) return;
+      
+        let command = message.content.split(" ")[0];
+        command = command.slice(prefix.length);
+      
+      
+      let args = message.content.split(" ").slice(1);
+      let x = args.join(" ")
+        if(message.content.startsWith(prefix + 'say')) { // الامر
+            message.channel.send(''+x);
+                message.delete(999)
+        }
         
-        message.delete();
-        let sayE = new Discord.RichEmbed() 
-        .setColor('RANDOM')
-        .setDescription(`**${wordsSay}**`)   
-        
-        message.channel.send(sayE);
-    }
-});
-
-client2.on('message', message => {
-  var args = message.content.toLowerCase().split(' ');
-    var command = args[0];
-    var prefix = '-';
-    var wordsSay = message.content.split(' ').slice(1).join(' ');
-    
-    if(command == prefix + 'say') {
-
-        if(!wordsSay) return message.channel.send(`**Ex:** ${prefix}say Hello Im Bot`);
-        
-        message.delete();
-        let sayE = new Discord.RichEmbed() 
-        .setColor('RANDOM')
-        .setDescription(`**${wordsSay}**`)   
-        
-        message.channel.send(sayE);
-    }
-});
+       
+      });
 
 client.login(process.env.TOKEN);// لا تغير فيها شيء
 client2.login(process.env.TOKEN2);// لا تغير فيها شيء
